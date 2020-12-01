@@ -6,7 +6,7 @@ const addItems = document.querySelectorAll(".add-item");
 const listColumns = document.querySelectorAll(".drag-item-list");
 const backlogList = document.getElementById("backlog-list");
 const progressList = document.getElementById("progress-list");
-const onHoldList = document.getElementById("review-list");
+const reviewList = document.getElementById("review-list");
 const completeList = document.getElementById("complete-list");
 
 let updatedOnLoad = false;
@@ -46,6 +46,11 @@ function updateSavedColumns() {
   });
 }
 
+function filterArray(array) {
+  const filteredArray = array.filter((item) => item !== null);
+  return filteredArray;
+}
+
 function createItemEl(columnEl, column, item, index) {
   const listEl = document.createElement("li");
   listEl.classList.add("drag-item");
@@ -57,3 +62,62 @@ function createItemEl(columnEl, column, item, index) {
   listEl.setAttribute("onfocusout", `updateItem(${index}, ${column})`);
   columnEl.appendChild(listEl);
 }
+
+function updateDOM() {
+  if (!updatedOnLoad) {
+    getSavedColumns();
+  }
+  backlogList.textContent = "";
+  backlogListArray.forEach((backlogItem, index) => {
+    createItemEl(backlogList, 0, backlogItem, index);
+  });
+  backlogListArray = filterArray(backlogListArray);
+  progressList.textContent = "";
+  progressListArray.forEach((progressItem, index) => {
+    createItemEl(progressList, 1, progressItem, index);
+  });
+  progressListArray = filterArray(progressListArray);
+  reviewList.textContent = "";
+  reviewListArray.forEach((reviewItem, index) => {
+    createItemEl(reviewList, 3, reviewItem, index);
+  });
+  reviewListArray = filterArray(reviewListArray);
+  completeList.textContent = "";
+  completeListArray.forEach((completeItem, index) => {
+    createItemEl(completeList, 2, completeItem, index);
+  });
+  completeListArray = filterArray(completeListArray);
+  updatedOnLoad = true;
+  updateSavedColumns();
+}
+
+function addToColumn(column) {
+  const itemText = addItems[column].textContent;
+  const selectedArray = listArrays[column];
+  selectedArray.push(itemText);
+  addItems[column].textContent = "";
+  updateDOM();
+}
+
+function showInputBox(column) {
+  addBtns[column].style.visibility = "hidden";
+  saveItemBtns[column].style.display = "flex";
+  addItemContainers[column].style.display = "flex";
+}
+
+function hideInputBox(column) {
+  addBtns[column].style.visibility = "visible";
+  saveItemBtns[column].style.display = "none";
+  addItemContainers[column].style.display = "none";
+  addToColumn(column);
+}
+
+function rebuildArrays() {
+  backlogListArray = Array.from(backlogList.children).map(item => item.textContent);
+  progressListArray = Array.from(progressList.children).map(item => item.textContent);
+  reviewListArray = Array.from(reviewList.children).map(item => item.textContent);
+  completeListArray = Array.from(completeList.children).map(item => item.textContent);
+  updateDOM();
+}
+
+updateDOM();

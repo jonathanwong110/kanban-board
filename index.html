@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Drag and Drop</title>
-  <link rel="icon" type="image/png" href="https://static.thenounproject.com/png/66553-200.png"
-/>
+  <link rel="icon" type="image/png" href="https://img.icons8.com/nolan/2x/clipboard.png" />
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -16,6 +15,7 @@
 
 <body>
   <h1 class="main-title">Kanban Board</h1>
+  <h2 class="main-title">Drag and Drop</h1>
   <div class="drag-container">
     <ul class="drag-columns">
 
@@ -24,12 +24,20 @@
           <h1>Backlog</h1>
         </span>
         <div id="backlog-content" class="column-content">
-          <ul class="drag-item-list">
-
-          </ul>
+          <ul class="drag-item-list" id="backlog-list" ondrop="drop(event)" ondragover="allowDrop(event)"
+            ondragenter="dragEnter(0)"></ul>
         </div>
-        <div class="add-btn">
-          <span>Add Item</span>
+        <div class="add-btn-group">
+          <div class="add-btn" onclick="showInputBox(1)">
+            <span class="plus-sign">+</span>
+            <span>Add Item</span>
+          </div>
+          <div class="add-btn solid" onclick="hideInputBox(1)">
+            <span>Save Item</span>
+          </div>
+        </div>
+        <div class="add-container">
+          <div class="add-item" contenteditable="true"></div>
         </div>
       </li>
 
@@ -38,12 +46,20 @@
           <h1>Progress</h1>
         </span>
         <div id="progress-content" class="column-content">
-          <ul class="drag-item-list">
-
-          </ul>
+          <ul class="drag-item-list" id="progress-list" ondrop="drop(event)" ondragover="allowDrop(event)"
+            ondragenter="dragEnter(0)"></ul>
         </div>
-        <div class="add-btn">
-          <span>Add Item</span>
+        <div class="add-btn-group">
+          <div class="add-btn" onclick="showInputBox(1)">
+            <span class="plus-sign">+</span>
+            <span>Add Item</span>
+          </div>
+          <div class="add-btn solid" onclick="hideInputBox(1)">
+            <span>Save Item</span>
+          </div>
+        </div>
+        <div class="add-container">
+          <div class="add-item" contenteditable="true"></div>
         </div>
       </li>
 
@@ -52,12 +68,20 @@
           <h1>Review</h1>
         </span>
         <div id="review-content" class="column-content">
-          <ul class="drag-item-list">
-
-          </ul>
+          <ul class="drag-item-list" id="review-list" ondrop="drop(event)" ondragover="allowDrop(event)"
+            ondragenter="dragEnter(0)"></ul>
         </div>
-        <div class="add-btn">
-          <span>Add Item</span>
+        <div class="add-btn-group">
+          <div class="add-btn" onclick="showInputBox(1)">
+            <span class="plus-sign">+</span>
+            <span>Add Item</span>
+          </div>
+          <div class="add-btn solid" onclick="hideInputBox(1)">
+            <span>Save Item</span>
+          </div>
+        </div>
+        <div class="add-container">
+          <div class="add-item" contenteditable="true"></div>
         </div>
       </li>
 
@@ -65,20 +89,27 @@
         <span class="heading">
           <h1>Complete</h1>
         </span>
-        <div class="complete-content" class="column-content">
-          <ul class="drag-item-list">
-
-          </ul>
+        <div class="complete-content" class="complete-content">
+          <ul class="drag-item-list" id="complete-list" ondrop="drop(event)" ondragover="allowDrop(event)"
+            ondragenter="dragEnter(0)"></ul>
         </div>
-        <div class="add-btn">
-          <span>Add Item</span>
+        <div class="add-btn-group">
+          <div class="add-btn" onclick="showInputBox(1)">
+            <span class="plus-sign">+</span>
+            <span>Add Item</span>
+          </div>
+          <div class="add-btn solid" onclick="hideInputBox(1)">
+            <span>Save Item</span>
+          </div>
+        </div>
+        <div class="add-container">
+          <div class="add-item" contenteditable="true"></div>
         </div>
       </li>
 
     </ul>
   </div>
 
-  <!-- Script -->
   <script src="script.js"></script>
 </body>
 
