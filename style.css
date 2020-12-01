@@ -16,7 +16,6 @@ body {
 }
 
 .drag-columns {
-  text-align: center;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -30,12 +29,17 @@ body {
   justify-content: center;
   border-radius: 10px;
   margin: 10px;
+  font-weight: 400;
+  word-break: keep-all;
+  letter-spacing: 1px
 }
 
 .heading h1 {
   font-weight: 400;
   word-break: keep-all;
-  letter-spacing: 1px
+  letter-spacing: 1px;
+  font-size: 25px;
+  text-shadow: 2px 2px 10px black;
 }
 
 .drag-column {
@@ -44,4 +48,45 @@ body {
   position: relative;
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 10px;
+}
+
+.backlog-column .heading {
+  background-color: #b30000;
+}
+
+.progress-column .heading {
+  background-color:#006bb3;
+}
+
+.review-column .heading {
+  background-color:#b3b300;
+}
+
+.complete-column .heading {
+  background-color: #009900;
+}
+
+.add-btn {
+  padding-bottom: 10px;
+}
+
+.add-btn span {
+  margin-left: 30px;
+  font-size: 20px;
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    overflow-y: auto;
+  }
+  .drag-container {
+    margin: 0;
+  }
+  .drag-columns {
+    display: block;
+  }
+  .drag-column {
+    padding-top: 2.5px;
+    margin: 10px;
+  }
 }
