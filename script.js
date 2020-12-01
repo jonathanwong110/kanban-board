@@ -1,35 +1,34 @@
 const addBtns = document.querySelectorAll(".add-btn:not(.solid)");
-const saveItemBtns = document.querySelectorAll(".solid");
-const addItemContainers = document.querySelectorAll(".add-container");
-const addItems = document.querySelectorAll(".add-item");
+const saveTaskBtns = document.querySelectorAll(".solid");
+const addTaskContainers = document.querySelectorAll(".add-container");
+const addTasks = document.querySelectorAll(".add-task");
 
-const listColumns = document.querySelectorAll(".drag-item-list");
-const backlogList = document.getElementById("backlog-list");
+const listColumns = document.querySelectorAll(".drag-task-list");
+const toDoList = document.getElementById("toDo-list");
 const progressList = document.getElementById("progress-list");
 const reviewList = document.getElementById("review-list");
 const completeList = document.getElementById("complete-list");
 
 let updatedOnLoad = false;
 
-let backlogListArray = [];
+let toDoListArray = [];
 let progressListArray = [];
 let reviewListArray = [];
 let completeListArray = [];
 let listArrays = [];
 
-let draggedItem;
+let draggedTask;
 let dragging = false;
 let currentColumn;
 
 function getSavedColumns() {
-  if (localStorage.getItem("backlogItems")) {
-    console.log(addBtns)
-    backlogListArray = JSON.parse(localStorage.backlogItems);
-    progressListArray = JSON.parse(localStorage.progressItems);
-    reviewListArray = JSON.parse(localStorage.reviewItems);
-    completeListArray = JSON.parse(localStorage.completeItems);
+  if (localStorage.getItem("toDoTasks")) {
+    toDoListArray = JSON.parse(localStorage.toDoTasks);
+    progressListArray = JSON.parse(localStorage.progressTasks);
+    reviewListArray = JSON.parse(localStorage.reviewTasks);
+    completeListArray = JSON.parse(localStorage.completeTasks);
   } else {
-    backlogListArray = ["Brainstorm new project"];
+    toDoListArray = ["Brainstorm new project"];
     progressListArray = ["Running performance tests on new function"];
     reviewListArray = ["Check home page"];
     completeListArray = ["Getting things done"];
@@ -38,34 +37,34 @@ function getSavedColumns() {
 
 function updateSavedColumns() {
   listArrays = [
-    backlogListArray,
+    toDoListArray,
     progressListArray,
-    completeListArray,
     reviewListArray,
+    completeListArray,
   ];
-  const arrayNames = ["backlog", "progress", "complete", "review"];
+  const arrayNames = ["toDo", "progress", "review", "complete"];
   arrayNames.forEach((arrayName, index) => {
     localStorage.setItem(
-      `${arrayName}Items`,
+      `${arrayName}Tasks`,
       JSON.stringify(listArrays[index])
     );
   });
 }
 
 function filterArray(array) {
-  const filteredArray = array.filter((item) => item !== null);
+  const filteredArray = array.filter((task) => task !== null);
   return filteredArray;
 }
 
-function createItemEl(columnEl, column, item, index) {
+function createTaskEl(columnEl, column, task, index) {
   const listEl = document.createElement("li");
-  listEl.classList.add("drag-item");
-  listEl.textContent = item;
+  listEl.classList.add("drag-task");
+  listEl.textContent = task;
   listEl.draggable = true;
   listEl.setAttribute("ondragstart", "drag(event)");
   listEl.contentEditable = true;
   listEl.id = index;
-  listEl.setAttribute("onfocusout", `updateItem(${index}, ${column})`);
+  listEl.setAttribute("onfocusout", `updateTask(${index}, ${column})`);
   columnEl.appendChild(listEl);
 }
 
@@ -73,31 +72,31 @@ function updateDOM() {
   if (!updatedOnLoad) {
     getSavedColumns();
   }
-  backlogList.textContent = "";
-  backlogListArray.forEach((backlogItem, index) => {
-    createItemEl(backlogList, 0, backlogItem, index);
+  toDoList.textContent = "";
+  toDoListArray.forEach((toDoTask, index) => {
+    createTaskEl(toDoList, 0, toDoTask, index);
   });
-  backlogListArray = filterArray(backlogListArray);
+  toDoListArray = filterArray(toDoListArray);
   progressList.textContent = "";
-  progressListArray.forEach((progressItem, index) => {
-    createItemEl(progressList, 1, progressItem, index);
+  progressListArray.forEach((progressTask, index) => {
+    createTaskEl(progressList, 1, progressTask, index);
   });
   progressListArray = filterArray(progressListArray);
   reviewList.textContent = "";
-  reviewListArray.forEach((reviewItem, index) => {
-    createItemEl(reviewList, 2, reviewItem, index);
+  reviewListArray.forEach((reviewTask, index) => {
+    createTaskEl(reviewList, 2, reviewTask, index);
   });
   reviewListArray = filterArray(reviewListArray);
   completeList.textContent = "";
-  completeListArray.forEach((completeItem, index) => {
-    createItemEl(completeList, 3, completeItem, index);
+  completeListArray.forEach((completeTask, index) => {
+    createTaskEl(completeList, 3, completeTask, index);
   });
   completeListArray = filterArray(completeListArray);
   updatedOnLoad = true;
   updateSavedColumns();
 }
 
-function updateItem(id, column) {
+function updateTask(id, column) {
   const selectedArray = listArrays[column];
   const selectedColumnEl = listColumns[column].children;
   if (!dragging) {
@@ -111,36 +110,36 @@ function updateItem(id, column) {
 }
 
 function addToColumn(column) {
-  const itemText = addItems[column].textContent;
+  const taskText = addTasks[column].textContent;
   const selectedArray = listArrays[column];
-  selectedArray.push(itemText);
-  addItems[column].textContent = "";
+  selectedArray.push(taskText);
+  addTasks[column].textContent = "";
   updateDOM();
 }
 
 function showInputBox(column) {
   addBtns[column].style.visibility = "hidden";
-  saveItemBtns[column].style.display = "flex";
-  addItemContainers[column].style.display = "flex";
+  saveTaskBtns[column].style.display = "flex";
+  addTaskContainers[column].style.display = "flex";
 }
 
 function hideInputBox(column) {
   addBtns[column].style.visibility = "visible";
-  saveItemBtns[column].style.display = "none";
-  addItemContainers[column].style.display = "none";
+  saveTaskBtns[column].style.display = "none";
+  addTaskContainers[column].style.display = "none";
   addToColumn(column);
 }
 
 function rebuildArrays() {
-  backlogListArray = Array.from(backlogList.children).map(item => item.textContent);
-  progressListArray = Array.from(progressList.children).map(item => item.textContent);
-  completeListArray = Array.from(completeList.children).map(item => item.textContent);
-  reviewListArray = Array.from(reviewList.children).map(item => item.textContent);
+  toDoListArray = Array.from(toDoList.children).map(task => task.textContent);
+  progressListArray = Array.from(progressList.children).map(task => task.textContent);
+  reviewListArray = Array.from(reviewList.children).map(task => task.textContent);
+  completeListArray = Array.from(completeList.children).map(task => task.textContent);
   updateDOM();
 }
 
 function drag(e) {
-  draggedItem = e.target;
+  draggedTask = e.target;
   dragging = true;
 }
 
@@ -159,7 +158,7 @@ function drop(e) {
     column.classList.remove("over");
   });
   const parent = listColumns[currentColumn];
-  parent.appendChild(draggedItem);
+  parent.appendChild(draggedTask);
   dragging = false;
   rebuildArrays();
 }

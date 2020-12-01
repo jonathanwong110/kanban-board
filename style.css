@@ -1,11 +1,47 @@
 body {
-	background: url("https://sf-applications.s3.amazonaws.com/Bear/wallpapers/05/july-2020-wallpaper_desktop-3840x1600.png");
+	background: url("https://wallpaperaccess.com/full/17520.jpg");
   background-size: cover;
   background-position: 50% 60%;
   background-attachment: fixed;
   color: white;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 }
+
+:root {
+  --column-1: #b30000;
+  --column-2: #006bb3;
+  --column-3: #b3b300;;
+  --column-4: #009900;
+}
+
+.toDo-column .heading,
+.toDo-column .solid,
+.toDo-column .solid:hover,
+.toDo-column .over {
+  background-color: var(--column-1);
+}
+
+.progress-column .heading,
+.progress-column .solid,
+.progress-column .solid:hover,
+.progress-column .over {
+  background-color: var(--column-2);
+}
+
+.review-column .heading,
+.review-column .solid,
+.review-column .solid:hover,
+.review-column .over {
+  background-color: var(--column-3);
+}
+
+.complete-column .heading,
+.complete-column .solid,
+.complete-column .solid:hover,
+.complete-column .over {
+  background-color: var(--column-4);
+}
+
 
 .main-title {
   text-align: center;
@@ -46,35 +82,27 @@ body {
   border-radius: 10px;
 }
 
-.backlog-column .heading {
-  background-color: #b30000;
-}
-
-.progress-column .heading {
-  background-color:#006bb3;
-}
-
-.review-column .heading {
-  background-color:#b3b300;
-}
-
-.complete-column .heading {
-  background-color: #009900;
-}
-
-.drag-item-list {
+.drag-task-list {
   list-style-type: none;
-  margin: 0 12px 0 12px;
   padding: 0;
-  background-color: rgba(0, 0, 0, 0.8);
   border-radius: 5px;
 }
 
-.drag-item {
-  width: 100%;
-  margin: 3px 3px 3px 3px;
-  min-height: 50px;
-  height: auto;
+.drag-task {
+  margin: 10px;
+  padding: 10px;
+  height: fit-content;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.drag-task:focus {
+  outline: none;
+  background-color: white;
+  color: black;
 }
 
 .add-btn-group {
@@ -99,6 +127,10 @@ body {
   color: black;
 }
 
+.add-btn:active {
+  transform: scale(0.97);
+}
+
 .solid {
   display: none;
 }
@@ -112,7 +144,7 @@ body {
   display: none;
 }
 
-.add-item {
+.add-task {
   width: 100%;
   min-height: 100px;
   height: auto;
@@ -124,7 +156,7 @@ body {
   padding: 10px;
 }
 
-.add-item:focus {
+.add-task:focus {
   outline: none;
 }
 
