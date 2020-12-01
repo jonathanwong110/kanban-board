@@ -15,17 +15,23 @@ let backlogListArray = [];
 let progressListArray = [];
 let reviewListArray = [];
 let completeListArray = [];
+let listArrays = [];
+
+let draggedItem;
+let dragging = false;
+let currentColumn;
 
 function getSavedColumns() {
   if (localStorage.getItem("backlogItems")) {
+    console.log(addBtns)
     backlogListArray = JSON.parse(localStorage.backlogItems);
     progressListArray = JSON.parse(localStorage.progressItems);
     reviewListArray = JSON.parse(localStorage.reviewItems);
     completeListArray = JSON.parse(localStorage.completeItems);
   } else {
-    backlogListArray = ["Brainstore on new project"];
+    backlogListArray = ["Brainstorm new project"];
     progressListArray = ["Running performance tests on new function"];
-    reviewListArray = ["Check home page"]
+    reviewListArray = ["Check home page"];
     completeListArray = ["Getting things done"];
   }
 }
@@ -34,10 +40,10 @@ function updateSavedColumns() {
   listArrays = [
     backlogListArray,
     progressListArray,
-    reviewListArray,
     completeListArray,
+    reviewListArray,
   ];
-  const arrayNames = ["backlog", "progress", "review", "complete"];
+  const arrayNames = ["backlog", "progress", "complete", "review"];
   arrayNames.forEach((arrayName, index) => {
     localStorage.setItem(
       `${arrayName}Items`,
@@ -79,16 +85,29 @@ function updateDOM() {
   progressListArray = filterArray(progressListArray);
   reviewList.textContent = "";
   reviewListArray.forEach((reviewItem, index) => {
-    createItemEl(reviewList, 3, reviewItem, index);
+    createItemEl(reviewList, 2, reviewItem, index);
   });
   reviewListArray = filterArray(reviewListArray);
   completeList.textContent = "";
   completeListArray.forEach((completeItem, index) => {
-    createItemEl(completeList, 2, completeItem, index);
+    createItemEl(completeList, 3, completeItem, index);
   });
   completeListArray = filterArray(completeListArray);
   updatedOnLoad = true;
   updateSavedColumns();
+}
+
+function updateItem(id, column) {
+  const selectedArray = listArrays[column];
+  const selectedColumnEl = listColumns[column].children;
+  if (!dragging) {
+    if (!selectedColumnEl[id].textContent) {
+      delete selectedArray[id];
+    } else {
+      selectedArray[id] = selectedColumnEl[id].textContent;
+    }
+    updateDOM();
+  }
 }
 
 function addToColumn(column) {
@@ -115,9 +134,34 @@ function hideInputBox(column) {
 function rebuildArrays() {
   backlogListArray = Array.from(backlogList.children).map(item => item.textContent);
   progressListArray = Array.from(progressList.children).map(item => item.textContent);
-  reviewListArray = Array.from(reviewList.children).map(item => item.textContent);
   completeListArray = Array.from(completeList.children).map(item => item.textContent);
+  reviewListArray = Array.from(reviewList.children).map(item => item.textContent);
   updateDOM();
+}
+
+function drag(e) {
+  draggedItem = e.target;
+  dragging = true;
+}
+
+function dragEnter(column) {
+  listColumns[column].classList.add("over");
+  currentColumn = column;
+}
+
+function allowDrop(e) {
+  e.preventDefault();
+}
+
+function drop(e) {
+  e.preventDefault();
+  listColumns.forEach((column) => {
+    column.classList.remove("over");
+  });
+  const parent = listColumns[currentColumn];
+  parent.appendChild(draggedItem);
+  dragging = false;
+  rebuildArrays();
 }
 
 updateDOM();

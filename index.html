@@ -24,15 +24,19 @@
           <h1>Backlog</h1>
         </span>
         <div id="backlog-content" class="column-content">
-          <ul class="drag-item-list" id="backlog-list" ondrop="drop(event)" ondragover="allowDrop(event)"
-            ondragenter="dragEnter(0)"></ul>
+          <ul class="drag-item-list" 
+          id="backlog-list" 
+          ondrop="drop(event)" 
+          ondragover="allowDrop(event)"
+          ondragenter="dragEnter(0)">
+        </ul>
         </div>
         <div class="add-btn-group">
-          <div class="add-btn" onclick="showInputBox(1)">
+          <div class="add-btn" onclick="showInputBox(0)">
             <span class="plus-sign">+</span>
             <span>Add Item</span>
           </div>
-          <div class="add-btn solid" onclick="hideInputBox(1)">
+          <div class="add-btn solid" onclick="hideInputBox(0)">
             <span>Save Item</span>
           </div>
         </div>
@@ -46,8 +50,12 @@
           <h1>Progress</h1>
         </span>
         <div id="progress-content" class="column-content">
-          <ul class="drag-item-list" id="progress-list" ondrop="drop(event)" ondragover="allowDrop(event)"
-            ondragenter="dragEnter(0)"></ul>
+          <ul class="drag-item-list" 
+          id="progress-list" 
+          ondrop="drop(event)" 
+          ondragover="allowDrop(event)"
+          ondragenter="dragEnter(1)">
+        </ul>
         </div>
         <div class="add-btn-group">
           <div class="add-btn" onclick="showInputBox(1)">
@@ -68,15 +76,19 @@
           <h1>Review</h1>
         </span>
         <div id="review-content" class="column-content">
-          <ul class="drag-item-list" id="review-list" ondrop="drop(event)" ondragover="allowDrop(event)"
-            ondragenter="dragEnter(0)"></ul>
+          <ul class="drag-item-list" 
+          id="review-list" 
+          ondrop="drop(event)" 
+          ondragover="allowDrop(event)"
+          ondragenter="dragEnter(2)">
+        </ul>
         </div>
         <div class="add-btn-group">
-          <div class="add-btn" onclick="showInputBox(1)">
+          <div class="add-btn" onclick="showInputBox(2)">
             <span class="plus-sign">+</span>
             <span>Add Item</span>
           </div>
-          <div class="add-btn solid" onclick="hideInputBox(1)">
+          <div class="add-btn solid" onclick="hideInputBox(2)">
             <span>Save Item</span>
           </div>
         </div>
@@ -90,15 +102,19 @@
           <h1>Complete</h1>
         </span>
         <div class="complete-content" class="complete-content">
-          <ul class="drag-item-list" id="complete-list" ondrop="drop(event)" ondragover="allowDrop(event)"
-            ondragenter="dragEnter(0)"></ul>
+          <ul class="drag-item-list" 
+          id="complete-list" 
+          ondrop="drop(event)" 
+          ondragover="allowDrop(event)"
+          ondragenter="dragEnter(3)">
+          </ul>
         </div>
         <div class="add-btn-group">
-          <div class="add-btn" onclick="showInputBox(1)">
+          <div class="add-btn" onclick="showInputBox(3)">
             <span class="plus-sign">+</span>
             <span>Add Item</span>
           </div>
-          <div class="add-btn solid" onclick="hideInputBox(1)">
+          <div class="add-btn solid" onclick="hideInputBox(3)">
             <span>Save Item</span>
           </div>
         </div>
