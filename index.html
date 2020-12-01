@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Drag and Drop</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <h1 class="main-title">Kanban Board</h1>
+  <div class="drag-container">
+    <ul class="drag-columns">
+
+      <li class="drag-column backlog-column">
+        <span class="heading">
+          <h1>Backlog</h1>
+        </span>
+        <div id="backlog-content" class="column-content">
+
+        </div>
+      </li>
+
+      <li class="drag-column progress-column">
+        <span class="heading">
+          <h1>Progress</h1>
+        </span>
+        <div id="progress-content" class="column-content">
+
+        </div>
+      </li>
+
+      <li class="drag-column review-column">
+        <span class="heading">
+          <h1>Review</h1>
+        </span>
+        <div id="review-content" class="column-content">
+
+        </div>
+      </li>
+
+      <li class="drag-column complete-column">
+        <span class="heading">
+          <h1>Complete</h1>
+        </span>
+        <div class="complete-content" class="column-content">
+
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+
+</html>
