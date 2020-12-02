@@ -14,117 +14,105 @@
 </head>
 
 <body>
-  <h1 class="title-heading">Kanban Board</h1>
-  <h2 class="title-heading">Drag and Drop</h1>
-  <div class="drag-container">
-    <ul class="drag-columns">
-      <li class="drag-column to-do-column">
-        <span class="heading">
-          <h1>To Do</h1>
-        </span>
-        <div id="to-do-content" class="custom-scroll">
-          <ul class="drag-task-list" 
-          id="to-do-list" 
-          ondrop="drop(event)" 
-          ondragover="allowDrop(event)"
-          ondragenter="dragEnter(0)">
-        </ul>
-        </div>
-        <div class="add-btn-group">
-          <div class="add-btn" onclick="showInputBox(0)">
-            <span class="plus-sign">+</span>
-            <span>Add Task</span>
+  <h1 class="app-title">Kanban Board</h1>
+  <h2 class="app-description">Drag and Drop</h1>
+    <div class="drag-container">
+      <ul class="drag-columns">
+        <li class="drag-column to-do-column">
+          <span class="heading">
+            <h1>To Do</h1>
+          </span>
+          <div id="to-do-content" class="custom-scroll">
+            <ul class="drag-task-list" id="to-do-list" ondrop="drop(event)" ondragover="allowDrop(event)"
+              ondragenter="dragEnter(0)">
+            </ul>
           </div>
-          <div class="add-btn solid" onclick="hideInputBox(0)">
-            <span>Save Task</span>
+          <div class="add-btn-group">
+            <div class="add-btn" onclick="showInputBox(0)">
+              <span class="plus-sign">+</span>
+              <span>Add Task</span>
+            </div>
+            <div class="add-btn solid" onclick="hideInputBox(0)">
+              <span>Save Task</span>
+            </div>
           </div>
-        </div>
-        <div class="add-container">
-          <div class="add-task" contenteditable="true"></div>
-        </div>
-      </li>
+          <div class="add-container">
+            <div class="add-task" contenteditable="true"></div>
+          </div>
+        </li>
 
-      <li class="drag-column progress-column">
-        <span class="heading">
-          <h1>Progress</h1>
-        </span>
-        <div id="progress-content" class="custom-scroll">
-          <ul class="drag-task-list" 
-          id="progress-list" 
-          ondrop="drop(event)" 
-          ondragover="allowDrop(event)"
-          ondragenter="dragEnter(1)">
-        </ul>
-        </div>
-        <div class="add-btn-group">
-          <div class="add-btn" onclick="showInputBox(1)">
-            <span class="plus-sign">+</span>
-            <span>Add Task</span>
+        <li class="drag-column progress-column">
+          <span class="heading">
+            <h1>Progress</h1>
+          </span>
+          <div id="progress-content" class="custom-scroll">
+            <ul class="drag-task-list" id="progress-list" ondrop="drop(event)" ondragover="allowDrop(event)"
+              ondragenter="dragEnter(1)">
+            </ul>
           </div>
-          <div class="add-btn solid" onclick="hideInputBox(1)">
-            <span>Save Task</span>
+          <div class="add-btn-group">
+            <div class="add-btn" onclick="showInputBox(1)">
+              <span class="plus-sign">+</span>
+              <span>Add Task</span>
+            </div>
+            <div class="add-btn solid" onclick="hideInputBox(1)">
+              <span>Save Task</span>
+            </div>
           </div>
-        </div>
-        <div class="add-container">
-          <div class="add-task" contenteditable="true"></div>
-        </div>
-      </li>
+          <div class="add-container">
+            <div class="add-task" contenteditable="true"></div>
+          </div>
+        </li>
 
-      <li class="drag-column review-column">
-        <span class="heading">
-          <h1>Review</h1>
-        </span>
-        <div id="review-content" class="custom-scroll">
-          <ul class="drag-task-list" 
-          id="review-list" 
-          ondrop="drop(event)" 
-          ondragover="allowDrop(event)"
-          ondragenter="dragEnter(2)">
-        </ul>
-        </div>
-        <div class="add-btn-group">
-          <div class="add-btn" onclick="showInputBox(2)">
-            <span class="plus-sign">+</span>
-            <span>Add Task</span>
+        <li class="drag-column review-column">
+          <span class="heading">
+            <h1>Review</h1>
+          </span>
+          <div id="review-content" class="custom-scroll">
+            <ul class="drag-task-list" id="review-list" ondrop="drop(event)" ondragover="allowDrop(event)"
+              ondragenter="dragEnter(2)">
+            </ul>
           </div>
-          <div class="add-btn solid" onclick="hideInputBox(2)">
-            <span>Save Task</span>
+          <div class="add-btn-group">
+            <div class="add-btn" onclick="showInputBox(2)">
+              <span class="plus-sign">+</span>
+              <span>Add Task</span>
+            </div>
+            <div class="add-btn solid" onclick="hideInputBox(2)">
+              <span>Save Task</span>
+            </div>
           </div>
-        </div>
-        <div class="add-container">
-          <div class="add-task" contenteditable="true"></div>
-        </div>
-      </li>
+          <div class="add-container">
+            <div class="add-task" contenteditable="true"></div>
+          </div>
+        </li>
 
-      <li class="drag-column complete-column">
-        <span class="heading">
-          <h1>Complete</h1>
-        </span>
-        <div class="complete-content" class="custom-scroll">
-          <ul class="drag-task-list" 
-          id="complete-list" 
-          ondrop="drop(event)" 
-          ondragover="allowDrop(event)"
-          ondragenter="dragEnter(3)">
-          </ul>
-        </div>
-        <div class="add-btn-group">
-          <div class="add-btn" onclick="showInputBox(3)">
-            <span class="plus-sign">+</span>
-            <span>Add Task</span>
+        <li class="drag-column complete-column">
+          <span class="heading">
+            <h1>Complete</h1>
+          </span>
+          <div class="complete-content" class="custom-scroll">
+            <ul class="drag-task-list" id="complete-list" ondrop="drop(event)" ondragover="allowDrop(event)"
+              ondragenter="dragEnter(3)">
+            </ul>
           </div>
-          <div class="add-btn solid" onclick="hideInputBox(3)">
-            <span>Save Task</span>
+          <div class="add-btn-group">
+            <div class="add-btn" onclick="showInputBox(3)">
+              <span class="plus-sign">+</span>
+              <span>Add Task</span>
+            </div>
+            <div class="add-btn solid" onclick="hideInputBox(3)">
+              <span>Save Task</span>
+            </div>
           </div>
-        </div>
-        <div class="add-container">
-          <div class="add-task" contenteditable="true"></div>
-        </div>
-      </li>
-    </ul>
-  </div>
+          <div class="add-container">
+            <div class="add-task" contenteditable="true"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
