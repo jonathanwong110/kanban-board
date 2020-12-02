@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Drag and Drop</title>
-  <link rel="icon" type="image/png" href="https://img.icons8.com/nolan/2x/clipboard.png" />
+  <link rel="icon" type="image/png" href="https://cdn3.iconfinder.com/data/icons/business-color-8/100/business-color-go-10-512.png" />
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -14,18 +14,17 @@
 </head>
 
 <body>
-  <h1 class="main-title">Kanban Board</h1>
-  <h2 class="main-title">Drag and Drop</h1>
+  <h1 class="title-heading">Kanban Board</h1>
+  <h2 class="title-heading">Drag and Drop</h1>
   <div class="drag-container">
     <ul class="drag-columns">
-
-      <li class="drag-column toDo-column">
+      <li class="drag-column to-do-column">
         <span class="heading">
           <h1>To Do</h1>
         </span>
-        <div id="toDo-content" class="column-content">
+        <div id="to-do-content" class="custom-scroll">
           <ul class="drag-task-list" 
-          id="toDo-list" 
+          id="to-do-list" 
           ondrop="drop(event)" 
           ondragover="allowDrop(event)"
           ondragenter="dragEnter(0)">
@@ -49,7 +48,7 @@
         <span class="heading">
           <h1>Progress</h1>
         </span>
-        <div id="progress-content" class="column-content">
+        <div id="progress-content" class="custom-scroll">
           <ul class="drag-task-list" 
           id="progress-list" 
           ondrop="drop(event)" 
@@ -75,7 +74,7 @@
         <span class="heading">
           <h1>Review</h1>
         </span>
-        <div id="review-content" class="column-content">
+        <div id="review-content" class="custom-scroll">
           <ul class="drag-task-list" 
           id="review-list" 
           ondrop="drop(event)" 
@@ -101,7 +100,7 @@
         <span class="heading">
           <h1>Complete</h1>
         </span>
-        <div class="complete-content" class="complete-content">
+        <div class="complete-content" class="custom-scroll">
           <ul class="drag-task-list" 
           id="complete-list" 
           ondrop="drop(event)" 
@@ -122,7 +121,6 @@
           <div class="add-task" contenteditable="true"></div>
         </div>
       </li>
-
     </ul>
   </div>
 

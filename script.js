@@ -4,7 +4,7 @@ const addTaskContainers = document.querySelectorAll(".add-container");
 const addTasks = document.querySelectorAll(".add-task");
 
 const listColumns = document.querySelectorAll(".drag-task-list");
-const toDoList = document.getElementById("toDo-list");
+const toDoList = document.getElementById("to-do-list");
 const progressList = document.getElementById("progress-list");
 const reviewList = document.getElementById("review-list");
 const completeList = document.getElementById("complete-list");
@@ -28,10 +28,10 @@ function getSavedColumns() {
     reviewListArray = JSON.parse(localStorage.reviewTasks);
     completeListArray = JSON.parse(localStorage.completeTasks);
   } else {
-    toDoListArray = ["Brainstorm new project"];
-    progressListArray = ["Running performance tests on new function"];
-    reviewListArray = ["Check home page"];
-    completeListArray = ["Getting things done"];
+    toDoListArray = ["Run performance tests"];
+    progressListArray = ["Implement JWT"];
+    reviewListArray = ["Replace fetch with axios"];
+    completeListArray = ["Finish Auth functionality"];
   }
 }
 

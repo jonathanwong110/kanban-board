@@ -14,10 +14,10 @@ body {
   --column-4: #009900;
 }
 
-.toDo-column .heading,
-.toDo-column .solid,
-.toDo-column .solid:hover,
-.toDo-column .over {
+.to-do-column .heading,
+.to-do-column .solid,
+.to-do-column .solid:hover,
+.to-do-column .over {
   background-color: var(--column-1);
 }
 
@@ -42,8 +42,33 @@ body {
   background-color: var(--column-4);
 }
 
+::-webkit-scrollbar {
+  width: 15px;
+}
 
-.main-title {
+.custom-scroll {
+  overflow-y: auto;
+  max-height: 75vh;
+}
+
+::-webkit-scrollbar-track, .custom-scroll::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  margin-right: 5px;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb, .custom-scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.title-heading {
   text-align: center;
   font-weight: 500;
   letter-spacing: 2px;
@@ -84,15 +109,16 @@ body {
 
 .drag-task-list {
   list-style-type: none;
-  padding: 0;
+  padding: 20px 0 5px 0;
   border-radius: 5px;
 }
 
 .drag-task {
   margin: 10px;
   padding: 10px;
+  word-break: break-all;
   height: fit-content;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   line-height: 1.5rem;
   letter-spacing: 1px;
@@ -108,6 +134,8 @@ body {
 .add-btn-group {
   display: flex;
   justify-content: space-between;
+  font-size: 17px;
+  font-weight: 500;
 }
 
 .add-btn {
@@ -135,6 +163,13 @@ body {
   display: none;
 }
 
+.solid:hover {
+  transition: unset;
+  filter: brightness(95%);
+  color: white;
+}
+
+
 .add-container {
   margin: 10px;
   padding: 5px 10px;
@@ -158,6 +193,10 @@ body {
 
 .add-task:focus {
   outline: none;
+}
+
+.plus-sign {
+  margin-right: 5px;
 }
 
 @media screen and (max-width: 800px) {
