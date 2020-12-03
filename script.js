@@ -28,10 +28,10 @@ function getSavedColumns() {
     reviewListArray = JSON.parse(localStorage.reviewTasks);
     completeListArray = JSON.parse(localStorage.completeTasks);
   } else {
-    toDoListArray = ["Run performance tests"];
-    progressListArray = ["Implement JWT"];
-    reviewListArray = ["Replace fetch with axios"];
-    completeListArray = ["Finish Auth functionality"];
+    toDoListArray = ["Run performance tests", "Improve RESTful API"];
+    progressListArray = ["Implement JWT", "Incorporate new icons"];
+    reviewListArray = ["Replace fetch with axios", "Build edit feature for all objects created"];
+    completeListArray = ["Finish Auth functionality", "Updated UI"];
   }
 }
 
